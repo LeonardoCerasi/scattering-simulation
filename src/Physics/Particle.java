@@ -150,4 +150,20 @@ public class Particle extends Object {
 
         return particles;
     }
+
+    /**
+     * This metod moves a point particle of a time interval "delta_t" in the future.
+     * @param delta_t The time interval (in seconds) to move in the future.
+     */
+    public void motion(double delta_t) {
+
+        // Cycle over physical quantities
+        for (int i = 0; i < DIMENSION; i++) {
+            
+            // Constant-velocity linear motion
+            this.setQuantity(PHYSICAL_QUANTITIES[i],
+                this.getQuantity(PHYSICAL_QUANTITIES[i]) + this.getQuantity("v" + PHYSICAL_QUANTITIES[i]) * delta_t);
+
+        }
+    }
 }
