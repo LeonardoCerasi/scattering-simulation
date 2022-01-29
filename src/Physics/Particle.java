@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.util.Arrays;
 import java.util.ArrayList;
+
 /**
- * This class provides the object type Particle, which simulates a free point particle coupled to no force field.
+ * This class provides the object type Particle, which simulates a free point
+ * particle coupled to no force field.
  */
 public class Particle extends Object {
 
@@ -31,7 +33,8 @@ public class Particle extends Object {
     private double vz;
 
     /**
-     * This metod sets the specified physical quantity of the particle to the specifies value.
+     * This metod sets the specified physical quantity of the particle to the
+     * specifies value.
      * 
      * @param quantity The String that specifies the physical quantity.
      * @param value    The double that specifies the value to assign.
@@ -109,7 +112,9 @@ public class Particle extends Object {
 
     /**
      * This metod initializes a Particle object with the given initial state.
-     * @param initial_state Array which describes the initial state of the particle: {m,x,y,z,vx,vy,vz}.
+     * 
+     * @param initial_state Array which describes the initial state of the particle:
+     *                      {m,x,y,z,vx,vy,vz}.
      */
     public Particle(double[] initial_state) {
 
@@ -127,9 +132,11 @@ public class Particle extends Object {
         vz = initial_state[6];
     }
 
-     /**
+    /**
      * This metod initializes an array of Particle objects.
-     * @param path The path of the .csv file with the initial conditions of the Framework object.
+     * 
+     * @param path The path of the .csv file with the initial conditions of the
+     *             Framework object.
      * @return An ArrayList of Particle objects: the initialized particles.
      */
     public static ArrayList<Particle> particles(String path) {
@@ -153,6 +160,7 @@ public class Particle extends Object {
 
     /**
      * This metod moves a point particle of a time interval "delta_t" in the future.
+     * 
      * @param delta_t The time interval (in seconds) to move in the future.
      */
     public void motion(double delta_t) {

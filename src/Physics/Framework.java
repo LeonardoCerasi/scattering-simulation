@@ -4,8 +4,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.util.Arrays;
+
 /**
- * This class provides the object type Box, which simulates a closed space in motion (both free motion and oscillation):
+ * This class provides the object type Box, which simulates a closed space in
+ * motion (both free motion and oscillation):
  */
 public class Framework {
     
@@ -37,7 +39,8 @@ public class Framework {
     private double tz;
 
     /**
-     * This metod sets the value of the specified physical quantity of the Box to the given value.
+     * This metod sets the value of the specified physical quantity of the Box to
+     * the given value.
      * 
      * @param quantity The String that specifies the physical quantity.
      * @param value    The double that specifies the value to assign.
@@ -145,7 +148,9 @@ public class Framework {
     /**
      * This constructor initializes a Framework object with the given initial state.
      * 
-     * @param initial_state A double[] array wich specifies the initial parameters of the framework: {x_min,y_min,z_min,x_max,y_max,z_max,vx,vy,vz,tx,ty,tz}.
+     * @param initial_state A double[] array wich specifies the initial parameters
+     *                      of the framework:
+     *                      {x_min,y_min,z_min,x_max,y_max,z_max,vx,vy,vz,tx,ty,tz}.
      */
     public Framework(double[] initial_state) {
 
@@ -172,7 +177,9 @@ public class Framework {
 
     /**
      * This metod initializes a Framework object interactively.
-     * @param path The path of the .csv file with the initial conditions of the Framework object.
+     * 
+     * @param path The path of the .csv file with the initial conditions of the
+     *             Framework object.
      * @return A Framework: the initialized framework.
      */
     public static Framework framework(String path) {
@@ -193,9 +200,13 @@ public class Framework {
     }
 
     /**
-     * This metod calculates the motion of the framework from an instant "t" in a time interval "delta_t".
-     * @param t The time instant (in seconds) at which the motion is calculated.
-     * @param delta_t The time interval (in seconds) in which the framework moves in the future.
+     * This metod calculates the motion of the framework from an instant "t" in a
+     * time interval "delta_t".
+     * 
+     * @param t       The time instant (in seconds) at which the motion is
+     *                calculated.
+     * @param delta_t The time interval (in seconds) in which the framework moves in
+     *                the future.
      */
     public void frameworkMotion(double t, double delta_t) {
 
@@ -220,9 +231,11 @@ public class Framework {
     }
 
     /**
-     * This metod takes a point particle and controls that the coordinates of the particle respect the constraints of the framework at a given time "t".
+     * This metod takes a point particle and controls that the coordinates of the
+     * particle respect the constraints of the framework at a given time "t".
+     * 
      * @param particle The point particle of type Particle which moves.
-     * @param t The present time instant (in seconds).
+     * @param t        The present time instant (in seconds).
      */
     public void constraints(Particle particle, double t) {
 
