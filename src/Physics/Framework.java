@@ -200,22 +200,60 @@ public class Framework {
     public void frameworkMotion(double t, double delta_t) {
 
         //Cycle over dimensions
-        for (int i = 0; i < DIMENSION; i++) {
+        for (String dimension : DIMENSIONS) {
           
             //Verse of motion
             int verse = 1;
-            if (((int) Math.floor(t) % this.getQuantity("t" + PHYSICAL_QUANTITIES[i])) == 1
-                    || ((int) Math.floor(t) % this.getQuantity("t" + PHYSICAL_QUANTITIES[i]) == 2)) {
+            if (((int) Math.floor(t) % this.getQuantity("t" + dimension)) == 1
+                    || ((int) Math.floor(t) % this.getQuantity("t" + dimension) == 2)) {
                 verse = -1; //change of the verse of motion
             }
 
             //Motion of the minimum edge
-            this.setQuantity(PHYSICAL_QUANTITIES[i] + "_min", this.getQuantity(PHYSICAL_QUANTITIES[i] + "_min")
-                    + verse * this.getQuantity("v" + PHYSICAL_QUANTITIES[i]) * delta_t);
+            this.setQuantity(dimension + "_min", this.getQuantity(dimension + "_min")
+                    + verse * this.getQuantity("v" + dimension) * delta_t);
 
             //Motion of the maximum edge
-            this.setQuantity(PHYSICAL_QUANTITIES[i] + "_max", this.getQuantity(PHYSICAL_QUANTITIES[i] + "_max")
-                    + verse * this.getQuantity("v" + PHYSICAL_QUANTITIES[i]) * delta_t);
+            this.setQuantity(dimension + "_max", this.getQuantity(dimension + "_max")
+                    + verse * this.getQuantity("v" + dimension) * delta_t);
+        }
+    }
+
+    /**
+     * This metod takes a point particle and controls that the coordinates of the particle respect the constraints of the framework at a given time "t".
+     * @param particle The point particle of type Particle which moves.
+     * @param t The present time instant (in seconds).
+     */
+    public void constraints(Particle particle, double t) {
+
+        //Cycle over dimensions
+        for(String dimension : DIMENSIONS) {
+
+            //Verse of motion
+            int verse = 1;
+            if (((int) Math.floor(t) % this.getQuantity("t" + dimension)) == 1
+                    || ((int) Math.floor(t) % this.getQuantity("t" + dimension) == 2)) {
+                verse = -1; //change of the verse of motion
+            }
+
+            //If the particle collides with the minimum edge of the framework
+            if (particle.getQuantity(dimension) < this.getQuantity(dimension + "_min") &&
+                    particle.getQuantity("v" + dimension) < verse * this.getQuantity("v" + dimension)) {
+
+                //Equations for the collision of particle-wall
+                particle.setQuantity("v" + dimension, verse * 2 * this.getQuantity("v" + dimension)
+                        - particle.getQuantity("v" + dimension));
+                particle.setQuantity(dimension, this.getQuantity(dimension + "_min"));
+
+                //If the particle collides with the maximum edge of the framework
+            } else if (particle.getQuantity(dimension) > this.getQuantity(dimension + "_max") &&
+                    particle.getQuantity("v" + dimension) > verse * this.getQuantity("v" + dimension)) {
+
+                //Equations for the collision of particle-wall
+                particle.setQuantity("v" + dimension, verse * 2 * this.getQuantity("v" + dimension)
+                        - particle.getQuantity("v" + dimension));
+                particle.setQuantity(dimension, this.getQuantity(dimension + "_max"));
+            }
         }
     }
 }
