@@ -191,4 +191,31 @@ public class Framework {
         //Return the framework
         return new Framework(initial_state);
     }
+
+    /**
+     * This metod calculates the motion of the framework from an instant "t" in a time interval "delta_t".
+     * @param t The time instant (in seconds) at which the motion is calculated.
+     * @param delta_t The time interval (in seconds) in which the framework moves in the future.
+     */
+    public void frameworkMotion(double t, double delta_t) {
+
+        //Cycle over dimensions
+        for (int i = 0; i < DIMENSION; i++) {
+          
+            //Verse of motion
+            int verse = 1;
+            if (((int) Math.floor(t) % this.getQuantity("t" + PHYSICAL_QUANTITIES[i])) == 1
+                    || ((int) Math.floor(t) % this.getQuantity("t" + PHYSICAL_QUANTITIES[i]) == 2)) {
+                verse = -1; //change of the verse of motion
+            }
+
+            //Motion of the minimum edge
+            this.setQuantity(PHYSICAL_QUANTITIES[i] + "_min", this.getQuantity(PHYSICAL_QUANTITIES[i] + "_min")
+                    + verse * this.getQuantity("v" + PHYSICAL_QUANTITIES[i]) * delta_t);
+
+            //Motion of the maximum edge
+            this.setQuantity(PHYSICAL_QUANTITIES[i] + "_max", this.getQuantity(PHYSICAL_QUANTITIES[i] + "_max")
+                    + verse * this.getQuantity("v" + PHYSICAL_QUANTITIES[i]) * delta_t);
+        }
+    }
 }
