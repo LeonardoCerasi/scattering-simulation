@@ -1,13 +1,13 @@
 package Physics;
 
 /**
- * This class provides the object type Particle, which simulates a free point
- * particle coupled to no force field.
+ * This class provides the object type Particle, which simulates a free point particle coupled to no force field.
  */
 public class Particle extends Object {
 
     // Constants
     static final int DIMENSION = 3;
+    static final String[] DIMENSIONS = { "x", "y", "z" };
     static final String[] PHYSICAL_QUANTITIES = { "x", "y", "z", "vx", "vy", "vz" };
 
     // Initialization of class parameters
@@ -26,8 +26,7 @@ public class Particle extends Object {
     private double vz;
 
     /**
-     * This metod sets the specified physical quantity of the particle to the
-     * specifies value.
+     * This metod sets the specified physical quantity of the particle to the specifies value.
      * 
      * @param quantity The String that specifies the physical quantity.
      * @param value    The double that specifies the value to assign.
@@ -105,7 +104,7 @@ public class Particle extends Object {
 
     /**
      * This metod initializes a Particle object with the given initial state.
-     * @param initial_state Array which describes the initial state of the particle: {m,x,y,z,vx,vy,vz,ax,ay,az}.
+     * @param initial_state Array which describes the initial state of the particle: {m,x,y,z,vx,vy,vz}.
      */
     public Particle(double[] initial_state) {
 
