@@ -188,7 +188,7 @@ public class Framework {
             e.printStackTrace();
         }
 
-        //Return the framework
+        // Return the framework
         return new Framework(initial_state);
     }
 
@@ -199,21 +199,21 @@ public class Framework {
      */
     public void frameworkMotion(double t, double delta_t) {
 
-        //Cycle over dimensions
+        // Cycle over dimensions
         for (String dimension : DIMENSIONS) {
           
-            //Verse of motion
+            // Verse of motion
             int verse = 1;
             if (((int) Math.floor(t) % this.getQuantity("t" + dimension)) == 1
                     || ((int) Math.floor(t) % this.getQuantity("t" + dimension) == 2)) {
-                verse = -1; //change of the verse of motion
+                verse = -1; // Change of the verse of motion
             }
 
-            //Motion of the minimum edge
+            // Motion of the minimum edge
             this.setQuantity(dimension + "_min", this.getQuantity(dimension + "_min")
                     + verse * this.getQuantity("v" + dimension) * delta_t);
 
-            //Motion of the maximum edge
+            // Motion of the maximum edge
             this.setQuantity(dimension + "_max", this.getQuantity(dimension + "_max")
                     + verse * this.getQuantity("v" + dimension) * delta_t);
         }
@@ -226,30 +226,30 @@ public class Framework {
      */
     public void constraints(Particle particle, double t) {
 
-        //Cycle over dimensions
+        // Cycle over dimensions
         for(String dimension : DIMENSIONS) {
 
-            //Verse of motion
+            // Verse of motion
             int verse = 1;
             if (((int) Math.floor(t) % this.getQuantity("t" + dimension)) == 1
                     || ((int) Math.floor(t) % this.getQuantity("t" + dimension) == 2)) {
-                verse = -1; //change of the verse of motion
+                verse = -1; // Change of the verse of motion
             }
 
-            //If the particle collides with the minimum edge of the framework
+            // If the particle collides with the minimum edge of the framework
             if (particle.getQuantity(dimension) < this.getQuantity(dimension + "_min") &&
                     particle.getQuantity("v" + dimension) < verse * this.getQuantity("v" + dimension)) {
 
-                //Equations for the collision of particle-wall
+                // Equations for the collision of particle-wall
                 particle.setQuantity("v" + dimension, verse * 2 * this.getQuantity("v" + dimension)
                         - particle.getQuantity("v" + dimension));
                 particle.setQuantity(dimension, this.getQuantity(dimension + "_min"));
 
-                //If the particle collides with the maximum edge of the framework
+                // If the particle collides with the maximum edge of the framework
             } else if (particle.getQuantity(dimension) > this.getQuantity(dimension + "_max") &&
                     particle.getQuantity("v" + dimension) > verse * this.getQuantity("v" + dimension)) {
 
-                //Equations for the collision of particle-wall
+                // Equations for the collision of particle-wall
                 particle.setQuantity("v" + dimension, verse * 2 * this.getQuantity("v" + dimension)
                         - particle.getQuantity("v" + dimension));
                 particle.setQuantity(dimension, this.getQuantity(dimension + "_max"));

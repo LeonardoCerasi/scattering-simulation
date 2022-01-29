@@ -158,11 +158,11 @@ public class Particle extends Object {
     public void motion(double delta_t) {
 
         // Cycle over physical quantities
-        for (int i = 0; i < DIMENSION; i++) {
+        for (String dimension : DIMENSIONS) {
             
             // Constant-velocity linear motion
-            this.setQuantity(PHYSICAL_QUANTITIES[i],
-                this.getQuantity(PHYSICAL_QUANTITIES[i]) + this.getQuantity("v" + PHYSICAL_QUANTITIES[i]) * delta_t);
+            this.setQuantity(dimension,
+                this.getQuantity(dimension) + this.getQuantity("v" + dimension) * delta_t);
 
         }
     }
