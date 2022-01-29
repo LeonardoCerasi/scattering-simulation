@@ -1,5 +1,10 @@
 package Physics;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.util.Arrays;
+import java.util.ArrayList;
 /**
  * This class provides the object type Particle, which simulates a free point particle coupled to no force field.
  */
@@ -120,5 +125,29 @@ public class Particle extends Object {
         vx = initial_state[4];
         vy = initial_state[5];
         vz = initial_state[6];
+    }
+
+     /**
+     * This metod initializes an array of Particle objects.
+     * @param path The path of the .csv file with the initial conditions of the Framework object.
+     * @return An ArrayList of Particle objects: the initialized particles.
+     */
+    public static ArrayList<Particle> particles(String path) {
+
+        // Particles initialization
+        ArrayList<Particle> particles = new ArrayList<>();
+
+        //Reading particles' initial states from csv file
+        try (BufferedReader file = new BufferedReader(new FileReader(path));) {
+            String line = null;
+            while ((line = file.readLine()) != null) {
+                double[] initial_state = Arrays.stream(line.split(",")).mapToDouble(Double::parseDouble).toArray();
+	            particles.add(new Particle(initial_state));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return particles;
     }
 }
