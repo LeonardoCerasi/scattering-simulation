@@ -1,5 +1,9 @@
 package Physics;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.util.Arrays;
 /**
  * This class provides the object type Box, which simulates a closed space in motion (both free motion and oscillation):
  */
@@ -164,5 +168,27 @@ public class Framework {
         tx = initial_state[9];
         ty = initial_state[10];
         tz = initial_state[11];
+    }
+
+    /**
+     * This metod initializes a Framework object interactively.
+     * @param path The path of the .csv file with the initial conditions of the Framework object.
+     * @return A Framework: the initialized framework.
+     */
+    public static Framework framework(String path) {
+
+        double[] initial_state = null;
+
+        try (BufferedReader file = new BufferedReader(new FileReader(path));) {
+            String line = null;
+            while ((line = file.readLine()) != null) {
+                initial_state = Arrays.stream(line.split(",")).mapToDouble(Double::parseDouble).toArray();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Return the framework
+        return new Framework(initial_state);
     }
 }
