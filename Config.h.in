@@ -1,0 +1,2 @@
+#define Scattering_VERSION_MAJOR @Scattering_VERSION_MAJOR@
+#define Scattering_VERSION_MINOR @Scattering_VERSION_MINOR@
