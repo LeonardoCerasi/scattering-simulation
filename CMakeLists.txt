@@ -11,6 +11,8 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR})
 
 configure_file(Config.h.in Config.h)
 
+include_directories(include)
+
 target_include_directories(Scattering PUBLIC ${PROJECT_BINARY_DIR})
 
 add_subdirectory(src/tools)

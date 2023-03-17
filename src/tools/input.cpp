@@ -1,4 +1,4 @@
-#include "input.h"
+#include "tools/input.h"
 
 int lines(const char *path)
 {

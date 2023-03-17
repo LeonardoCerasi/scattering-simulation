@@ -2,7 +2,7 @@
 
 #include "Config.h"
 
-#include "input.h"
+#include "tools/input.h"
 
 int main()
 {
