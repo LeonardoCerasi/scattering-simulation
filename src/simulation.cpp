@@ -4,6 +4,7 @@
 
 #include "tools/input.h"
 #include "classes/particle.h"
+#include "classes/framework.h"
 
 int main()
 {
@@ -14,6 +15,10 @@ int main()
     Particle part = Particle();
 
     std::cout << "Mass: " << part.get_mass() << std::endl;
+
+    Framework fram = Framework();
+
+    std::cout << "Min x: " << fram.get_minimum(0) << std::endl;
 
     return 0;
 }
