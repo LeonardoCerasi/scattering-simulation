@@ -17,3 +17,6 @@ target_include_directories(Scattering PUBLIC ${PROJECT_BINARY_DIR})
 
 add_subdirectory(src/tools)
 target_link_libraries(Scattering PUBLIC Input)
+
+add_subdirectory(src/classes)
+target_link_libraries(Scattering PUBLIC Classes)
