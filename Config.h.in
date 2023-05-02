@@ -1,2 +1,2 @@
-#define Scattering_VERSION_MAJOR @Scattering_VERSION_MAJOR@
-#define Scattering_VERSION_MINOR @Scattering_VERSION_MINOR@
+#define Simulation_VERSION_MAJOR @Simulation_VERSION_MAJOR@
+#define Simulation_VERSION_MINOR @Simulation_VERSION_MINOR@

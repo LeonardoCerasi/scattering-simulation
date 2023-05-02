@@ -8,7 +8,7 @@
 
 int main()
 {
-    std::cout << "Version " << Scattering_VERSION_MAJOR << "." << Scattering_VERSION_MINOR << std::endl;
+    std::cout << "Version " << Simulation_VERSION_MAJOR << "." << Simulation_VERSION_MINOR << std::endl;
 
     std::cout << "Linee: " << lines("src/classes/particle.cpp") << std::endl;
 
