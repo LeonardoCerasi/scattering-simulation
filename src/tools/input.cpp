@@ -76,3 +76,34 @@ std::vector<std::vector<double>> read_data(const char *path, char type)
     input.close();
     return result;
 }
+
+double time_accuracy(std::ostream &output)
+{
+    // input time accuracy's exponent
+    int exp;
+    std::cout << "\nTime accuracy [s]: 10^-";
+    std::cin >> exp;
+
+    // effective time accuracy
+    double delta_t = pow(10, -exp);
+
+    // output time accuracy on log file
+    output << "\nThe simulation has a time accuracy of " << delta_t << " [s]\n"
+           << std::endl;
+
+    return delta_t;
+}
+
+double duration(std::ostream &output)
+{
+    // input duration
+    double duration;
+    std::cout << "\nThe simulation runs from 0 to: ";
+    std::cin >> duration;
+
+    // output duration on log file
+    output << "\nThe simulation runs from 0 to " << duration << " [s]\n"
+           << std::endl;
+
+    return duration;
+}

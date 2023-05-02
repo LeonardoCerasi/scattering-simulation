@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include <cmath>
 #include <vector>
 
 /**
@@ -22,3 +23,19 @@ int lines(const char *path);
  * @return (std::vector<std::vector<double>>) Vector of rows of doubles
  */
 std::vector<std::vector<double>> read_data(const char *path, char type);
+
+/**
+ * @brief This function asks to input the order of accuracy of the simulation and outputs it on an output Ostream object
+ *
+ * @param output Ostream object
+ * @return (double) Accuracy [s]
+ */
+double time_accuracy(std::ostream &output);
+
+/**
+ * @brief This function asks to input the duration of the simulation and outputs it on an output Ostream object
+ *
+ * @param output Ostream object
+ * @return (double) Duration [s]
+ */
+double duration(std::ostream &output);
