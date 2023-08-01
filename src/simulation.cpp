@@ -39,13 +39,13 @@ void simulation(const char *path_output, const char *path_framework, const char 
     for (double t = delta_t; t <= t_final; t += delta_t)
     {
         // output current time on log file
-        output << "t = " << t << std::endl
+        output << "\nt = " << t << std::endl
                << std::endl;
 
         // motion of the framework
         framework.framework_motion(t);
 
-        // cycle over partciles
+        // cycle over particles
         for (int i = 0; i < particles.size(); i++)
         {
             // motion of the particle

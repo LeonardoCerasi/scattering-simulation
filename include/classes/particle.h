@@ -34,7 +34,7 @@ public:
     /**
      * @brief Construct a new Particle object in a given initial state
      *
-     * @param initial_state Vector of initial parameteres
+     * @param initial_state Vector of initial parameters
      */
     Particle(std::vector<double> initial_state)
     {
@@ -83,7 +83,7 @@ public:
     void set_velocity(int coordinate, double value);
 
     /**
-     * @brief Sets the acceleration of the Particle along the selcted coordinate to the given value
+     * @brief Sets the acceleration of the Particle along the selected coordinate to the given value
      *
      * @param coordinate Selected coordinate (0: x / 1: y / 2: z)
      * @param value Acceleration of the particle [m/s²]

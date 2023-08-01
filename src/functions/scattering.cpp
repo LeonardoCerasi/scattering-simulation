@@ -16,13 +16,13 @@ int particles_scattering(std::vector<Particle> particles, double delta_t, std::o
     // initialize scattering count
     int scattering = 0;
 
-    // cycle over partciles
+    // cycle over particles
     for (int i = 0; i < particles.size() - 1; i++)
     {
-        // mass of the first partcile
+        // mass of the first particle
         double m1 = particles[i].get_mass();
 
-        // cycle over remaining partciles
+        // cycle over remaining particles
         for (int j = i + 1; j < particles.size(); j++)
         {
             // mass of the second particle
@@ -48,14 +48,14 @@ int particles_scattering(std::vector<Particle> particles, double delta_t, std::o
                     particles[j].set_velocity(k, v2);
                     particles[i].set_acceleration(k, a1);
                     particles[j].set_acceleration(k, a2);
-
-                    // output that a scattering happened on log file
-                    output << "Scattering\n"
-                           << std::endl;
-
-                    // update scattering counter
-                    scattering++;
                 }
+
+                // output that a scattering happened on log file
+                output << "Scattering\n"
+                       << std::endl;
+                       
+                // update scattering counter
+                scattering++;
             }
         }
     }

@@ -16,7 +16,7 @@
  * @return True if the two Particles scatter
  * @return False if the two Particles don't scatter
  */
-bool scatter(int coordinate, double delta_t, Particle particle1, Particle partcile2);
+bool scatter(int coordinate, double delta_t, Particle particle1, Particle particle2);
 
 /**
  * @brief This function manages the scattering calculations for a vector of Particles in a given time interval, returns the number of scatterings that happened and prints it on the output Ostream object

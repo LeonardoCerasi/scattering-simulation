@@ -64,13 +64,13 @@ void Framework::framework_motion(double t)
     // cycle over dimensions
     for (int i = 0; (get_period(i) != 0) && i < DIMENSION; i++)
     {
-        // armonic motion  of minimum edges
+        // harmonic motion  of minimum edges
         this->set_minimum(i, this->get_initial_minimum(i) + (this->get_initial_velocity(i) * this->get_period(i) / (2 * M_PI)) * sin(2 * M_PI * t / this->get_period(i)));
 
-        // armonic motion of the maximum edges
+        // harmonic motion of the maximum edges
         this->set_maximum(i, this->get_initial_maximum(i) + (this->get_initial_velocity(i) * this->get_period(i) / (2 * M_PI)) * sin(2 * M_PI * t / this->get_period(i)));
 
-        // armonic motion of the velocities
+        // harmonic motion of the velocities
         this->set_velocity(i, this->get_initial_velocity(i) * cos(2 * M_PI * t / this->get_period(i)));
     }
 }
