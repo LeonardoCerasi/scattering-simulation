@@ -178,7 +178,7 @@ public:
      * @param particle Particle object
      * @param t Time instant [s]
      */
-    void constraints(Particle particle, double t);
+    void constraints(Particle &particle, double delta_t);
 };
 
 /**

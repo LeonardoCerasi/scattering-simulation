@@ -97,7 +97,7 @@ void Framework::framework_log(std::ostream &output)
            << std::endl;
 }
 
-void Framework::constraints(Particle particle, double t)
+void Framework::constraints(Particle &particle, double delta_t)
 {
     // cycle over dimensions
     for (int i = 0; i < DIMENSION; i++)
