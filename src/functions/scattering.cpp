@@ -11,7 +11,7 @@ bool scatter(int coordinate, double delta_t, Particle particle1, Particle partic
               (particle2.get_position(coordinate) + particle2.get_velocity(coordinate) * delta_t + particle2.get_acceleration(coordinate) * pow(delta_t, 2) / 2.0))));
 }
 
-int particles_scattering(std::vector<Particle> particles, double delta_t, std::ostream &output)
+int particles_scattering(std::vector<Particle> &particles, double delta_t, std::ostream &output)
 {
     // initialize scattering count
     int scattering = 0;
@@ -35,8 +35,8 @@ int particles_scattering(std::vector<Particle> particles, double delta_t, std::o
                 for (int k = 0; k < DIMENSION; k++)
                 {
                     // elastic scattering of velocities
-                    double v1 = ((m1 - m2) / (m2 - m1)) * particles[i].get_velocity(k) + (2 * m2 / (m1 + m2)) * particles[j].get_velocity(k);
-                    double v2 = ((m2 - m1) / (m2 - m1)) * particles[j].get_velocity(k) + (2 * m1 / (m1 + m2)) * particles[i].get_velocity(k);
+                    double v1 = ((m1 - m2) / (m2 + m1)) * particles[i].get_velocity(k) + (2 * m2 / (m1 + m2)) * particles[j].get_velocity(k);
+                    double v2 = ((m2 - m1) / (m2 + m1)) * particles[j].get_velocity(k) + (2 * m1 / (m1 + m2)) * particles[i].get_velocity(k);
 
                     // elastic scattering of accelerations
                     double a1 = particles[i].get_acceleration(k) - (m2 / m1) * particles[j].get_acceleration(k);

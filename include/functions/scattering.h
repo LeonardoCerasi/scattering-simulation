@@ -26,4 +26,4 @@ bool scatter(int coordinate, double delta_t, Particle particle1, Particle partic
  * @param output Ostream object
  * @return (int) Number of scatterings
  */
-int particles_scattering(std::vector<Particle> particles, double delta_t, std::ostream &output);
+int particles_scattering(std::vector<Particle> &particles, double delta_t, std::ostream &output);
