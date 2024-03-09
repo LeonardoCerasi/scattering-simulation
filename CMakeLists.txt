@@ -15,11 +15,5 @@ include_directories(include)
 
 target_include_directories(Simulation PUBLIC ${PROJECT_BINARY_DIR})
 
-add_subdirectory(src/tools)
-target_link_libraries(Simulation PUBLIC Input)
-
 add_subdirectory(src/classes)
 target_link_libraries(Simulation PUBLIC Classes)
-
-add_subdirectory(src/functions)
-target_link_libraries(Simulation PUBLIC Scattering)
