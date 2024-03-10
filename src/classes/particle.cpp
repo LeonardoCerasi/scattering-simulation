@@ -41,6 +41,21 @@ std::string Particle::log()
     return description;
 }
 
+// motion method
+
+void Particle::motion(double t, double Δt)
+{
+    auto f{[&] (double t, const std::array<double, 3*D> &x) -> std::array<double, 3*D>
+    {
+        std::array<double, 3*D> supp{x};
+        std::rotate(supp.begin(), supp.begin() + D, supp.end());
+        std::fill(supp.begin() + 2*D, supp.end(), 0);
+        return supp;
+    }};
+
+    this->r = runge_kutta<3*D>(t, Δt, this->r, f);
+}
+
 // miscellaneous methods
 
 std::vector<Particle> sys_init(const std::string path)

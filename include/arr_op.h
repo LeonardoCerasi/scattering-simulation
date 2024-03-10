@@ -1,6 +1,7 @@
 #pragma once
 
 #include <array>
+#include <algorithm>
 
 template <typename T, size_t N>
 inline std::array<T, N> operator+ (const std::array<T, N> &arr_1, const std::array<T, N> &arr_2)

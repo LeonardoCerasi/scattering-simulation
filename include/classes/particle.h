@@ -8,6 +8,7 @@
 
 #include "constants.h"
 #include "arr_op.h"
+#include "integration/runge_kutta.h"
 
 class Particle
 {
@@ -36,6 +37,10 @@ class Particle
         // log method
 
         std::string log();
+
+        // motion method
+
+        void motion(double t, double Δt);
 };
 
 // miscellaneous methods

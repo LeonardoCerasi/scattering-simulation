@@ -5,7 +5,7 @@
 #include "arr_op.h"
 
 template <std::size_t N>
-std::array<double, N> runge_kutta(double t, double h, const std::array<double, N> &x, std::function<std::array<double, N> (double, const std::array<double, N> &)> f) const override
+std::array<double, N> runge_kutta(double t, double h, const std::array<double, N> &x, std::function<std::array<double, N> (double, const std::array<double, N> &)> f)
 {
     std::array<double, N> k_1{f(t, x)};
     std::array<double, N> k_2{f(t + h/2., x + k_1 * h/2.)};
