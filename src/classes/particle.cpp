@@ -8,14 +8,21 @@ Particle::Particle(double M, std::array<double, 3*D> initial_state) : m{M}, r{in
 
 // get methods
 
-double Particle::get_m() { return this->m; }
-std::array<double, 3*D> Particle::get_r() { return this->r; }
+double Particle::get_m() const { return this->m; }
+std::array<double, 3*D> Particle::get_r() const { return this->r; }
+
+double Particle::get_x(int i) const { return this->get_r().at(i); }
+double Particle::get_v(int i) const { return this->get_r().at(i + D); }
+double Particle::get_a(int i) const { return this->get_r().at(i + 2*D); }
 
 // set methods
 
 void Particle::set_m(double M) { this->m = M; }
 void Particle::set_r(std::array<double, 3*D> R) { this->r = R; }
 
+void Particle::set_x(int i, double x) { this->r.at(i) = x; }
+void Particle::set_v(int i, double v) { this->r.at(i + D) = v; }
+void Particle::set_a(int i, double a) { this->r.at(i + 2*D) = a; }
 
 // log method
 

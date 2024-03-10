@@ -17,3 +17,6 @@ target_include_directories(Simulation PUBLIC ${PROJECT_BINARY_DIR})
 
 add_subdirectory(src/classes)
 target_link_libraries(Simulation PUBLIC Classes)
+
+add_subdirectory(src/interactions)
+target_link_libraries(Simulation PUBLIC Interactions)

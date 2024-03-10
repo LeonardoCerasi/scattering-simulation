@@ -8,15 +8,21 @@ Framework::Framework(std::array<double, D> R_min, std::array<double, D> R_max) :
 
 // get methods
 
-std::array<double, D> Framework::get_r_min() { return this->r_min; }
+std::array<double, D> Framework::get_r_min() const { return this->r_min; }
 
-std::array<double, D> Framework::get_r_max() { return this->r_max; }
+std::array<double, D> Framework::get_r_max() const { return this->r_max; }
+
+double Framework::get_x_min(int i) const { return this->get_r_min().at(i); }
+double Framework::get_x_max(int i) const { return this->get_r_max().at(i); }
 
 // set methods
 
 void Framework::set_r_min(std::array<double, D> R_min) { this->r_min = R_min; }
 
 void Framework::set_r_max(std::array<double, D> R_max) { this->r_max = R_max; }
+
+void Framework::set_x_min(int i, double x) { this->r_min.at(i) = x; }
+void Framework::set_x_max(int i, double x) { this->r_max.at(i) = x; }
 
 // log method
 

@@ -3,23 +3,21 @@
 
 #include "classes/particle.h"
 #include "classes/framework.h"
+#include "interactions/constraints.h"
 
 int main()
 {
     try
     {
-        std::vector<Particle> ensemble{sys_init("test/particles.in")};
-        std::cout << sys_log(ensemble) << std::endl;
+        Particle p{1, {0, 0, 0, 2, 2, 2, 0, 0, 0}};
+        Framework frame{{0, 0, 0}, {10, 10, 10}};
 
-        Framework frame{frame_init("test/framework.in")};
-        std::cout << frame.log() << "\n\n" << std::endl;
-
-        Particle p{1, {0, 0, 0, 0, 0, 0, 2, 2, 2}};
-        for (int t{}; t <= 10; t++)
+        for (double t{}; t <= 25; t += h)
         {
             std::cout << "t: " << t << std::endl;
             std::cout << p.log() << "\n\n" << std::endl;
-            p.motion(t, 1);
+            p.motion(t, h);
+            constraints(frame, p);
         }
     }
     catch(const std::exception& e) { std::cerr << e.what() << std::endl; }
