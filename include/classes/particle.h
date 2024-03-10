@@ -2,6 +2,9 @@
 
 #include <vector>
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <stdexcept>
 
 #include "constants.h"
 #include "arr_op.h"
@@ -11,28 +14,24 @@ class Particle
     private:
 
         double m;
-        std::array<double, D> r, v, a;
+        std::array<double, 3*D> r;
     
     public:
 
         // constructors
 
         Particle();
-        Particle(double M, std::vector<std::array<double, D>> initial_state);
+        Particle(double M, std::array<double, 3*D> initial_state);
 
         // get methods
 
         double get_m();
-        std::array<double, D> get_r();
-        std::array<double, D> get_v();
-        std::array<double, D> get_a();
+        std::array<double, 3*D> get_r();
 
         // set methods
 
         void set_m(double M);
-        void set_r(std::array<double, D> R);
-        void set_v(std::array<double, D> V);
-        void set_a(std::array<double, D> A);
+        void set_r(std::array<double, 3*D> R);
         
         // log method
 
@@ -41,6 +40,6 @@ class Particle
 
 // miscellaneous methods
 
-std::vector<Particle> sys_init(const char *path);
+std::vector<Particle> sys_init(const std::string path);
 
 std::string sys_log(std::vector<Particle> ensemble);
